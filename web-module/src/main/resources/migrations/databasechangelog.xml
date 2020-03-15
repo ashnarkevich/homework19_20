@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="crateTable-user" author="petrikov05@gmail.com">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT(11)" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(30)">
+                <constraints unique="true" nullable="true"/>
+            </column>
+            <column name="password" type="varchar(70)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="role" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="crateTable-item" author="petrikov05@gmail.com">
+        <createTable tableName="item">
+            <column name="id" type="BIGINT(11)" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="add_row1_to_table_user" author="petrikov05@gmail.com">
+        <insert tableName="user">
+            <column name="username" value="user"/>
+            <column name="password" value="$2y$12$3BalprZN8WvfZudMgbUzIez6I2gKdFPEuW9sey9yXZqZoSFdk5IH6"/>
+            <column name="role" value="USER"/>
+        </insert>
+    </changeSet>
+    <changeSet id="add_row2_to_table_user" author="petrikov05@gmail.com">
+        <insert tableName="user">
+            <column name="username" value="admin"/>
+            <column name="password" value="$2y$12$TUjasPW..kiYM5q.8J.RWeQgpPfss9QmQLOZJaRQGAYxdZ9ihijsG"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+    </changeSet>
+    <changeSet id="add_row1_to_table_item" author="petrikov05@gmail.com">
+        <insert tableName="item">
+            <column name="name" value="item_name_ready"/>
+            <column name="status" value="READY"/>
+        </insert>
+    </changeSet>
+    <changeSet id="add_row2_to_table_item" author="petrikov05@gmail.com">
+        <insert tableName="item">
+            <column name="name" value="item_name_comp"/>
+            <column name="status" value="COMPLETE"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
